@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row flex-column flex-md-row">
+      <div class="col-md-4">
+        <div class="kanban-tasks-todo">
+            <h2 class="text-center">Todo</h2>
+        </div>
+        <div class="kanban-task p-2 mb-3">
+          <div *ngFor="let task of filteredTasks" class="task-item mb-2">
+            <div class="tasks" *ngIf="task.status === 'todo'">
+              <h5>{{ task.name }}</h5>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-warning btn-sm" (click)="moveTask(task, 'doing')">Move to Doing</button>
+                    <button class="btn btn-success btn-sm" (click)="moveTask(task, 'done')">Move to Done</button>
+                </div>
+                <div class="d-flex justify-content-between">
+                   
+                    <button class="btn btn-primary btn-sm" (click)="editTask(task)">Information</button>
+                
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4">
+        <div class="kanban-tasks-doing">
+            <h2 class="text-center">Doing</h2>
+        </div>
+        <div class="kanban-task  p-2 mb-3">
+          <div *ngFor="let task of filteredTasks" class="task-item mb-2">
+            <div class="tasks" *ngIf="task.status === 'doing'">
+                <h5>{{ task.name }}</h5>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-info btn-sm" (click)="moveTask(task, 'todo')">Move to Todo</button>
+                    <button class="btn btn-success btn-sm" (click)="moveTask(task, 'done')">Move to Done</button>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary btn-sm" (click)="editTask(task)">Information</button>
+                
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4">
+        <div class="kanban-tasks-done">
+            <h2 class="text-center">Done</h2>
+        </div>
+        <div class="kanban-task  p-2 mb-3">
+          <div *ngFor="let task of filteredTasks" class="task-item mb-2">
+            <div class="tasks" *ngIf="task.status === 'done'">
+                <h5>{{ task.name }}</h5>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-info btn-sm" (click)="moveTask(task, 'todo')">Move to Todo</button>
+                    <button class="btn btn-warning btn-sm" (click)="moveTask(task, 'doing')">Move to Doing</button>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary btn-sm" (click)="editTask(task)">Information</button>
+                    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+  </div>

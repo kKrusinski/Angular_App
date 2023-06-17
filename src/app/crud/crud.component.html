@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Task List</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let task of tasks">
+        <div class="d-flex justify-content-between align-items-center">
+          <span>ID: {{ task.id }}</span>
+          <span>Status: {{ task.status }}</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="task-details">
+            <h5>{{ task.name }}</h5>
+            <button class="btn btn-primary" (click)="editTask(task)">Edit</button>
+             <button class="btn btn-primary" (click)="addChildTask(task.id)">Add Child Task</button>
+            <button class="btn btn-danger" (click)="deleteTask(task.id, task)">Delete</button>
+          </div>
+          <ul class="list-group">
+            
+            <li class="list-group-item" *ngFor="let childTask of task.task">
+              <div class="d-flex justify-content-between align-items-center">
+                <span>ID: {{ childTask.id }}</span>
+                <span>Status: {{ childTask.status }}</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="task-details">
+                  <h5>{{ childTask.name }}</h5>
+                  <button class="btn btn-primary" (click)="editTask(childTask)">Edit</button>
+                  <button class="btn btn-danger" (click)="deleteTask(childTask.id, childTask)">Delete</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <button class="btn btn-primary" (click)="addFunction()">Add Func</button>
+  </div>
